@@ -1,7 +1,8 @@
 ﻿using Application.Dto.Product;
+using Application.Dto.Product.Category;
 using FluentValidation;
 
-namespace CookingBook.Validators.Product
+namespace CookingBook.Validators.Product.Category
 {
     public class ProductCategoryAddValidator : AbstractValidator<ProductCategoryAddDto>
     {

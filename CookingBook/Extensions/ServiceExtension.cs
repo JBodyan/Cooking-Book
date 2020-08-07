@@ -9,6 +9,7 @@ using Application.Services.Interfaces;
 using AutoMapper;
 using CookingBook.Validators;
 using CookingBook.Validators.Product;
+using CookingBook.Validators.Product.Category;
 using FluentValidation.AspNetCore;
 using Data;
 using Data.Repositories;

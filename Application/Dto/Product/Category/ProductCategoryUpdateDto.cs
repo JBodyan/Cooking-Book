@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Application.Dto.Product
+namespace Application.Dto.Product.Category
 {
-    public class ProductCategoryDto
+    public class ProductCategoryUpdateDto
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public virtual List<ProductDto> Products { get; set; }
     }
 }

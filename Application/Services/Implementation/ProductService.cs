@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Application.Dto.Product;
+using Application.Dto.Product.Category;
 using Application.Services.Interfaces;
 using AutoMapper;
 using Data;
