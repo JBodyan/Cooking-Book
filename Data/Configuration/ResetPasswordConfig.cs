@@ -9,6 +9,7 @@ namespace Data.Configuration
         public void Configure(EntityTypeBuilder<ResetPassword> builder)
         {
             builder.ToTable("ResetPassword");
+
             builder.Property(e => e.Id)
                 .HasColumnName("id");
 

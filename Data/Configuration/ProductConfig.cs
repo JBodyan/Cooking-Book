@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Data.Entities;
+﻿using Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -12,6 +9,12 @@ namespace Data.Configuration
         public void Configure(EntityTypeBuilder<Product> builder)
         {
             builder.ToTable("Product");
+
+            builder.Property(e => e.Id)
+                .HasColumnName("id");
+
+            builder.Property(e => e.CategoryId)
+                .HasColumnName("category_id");
 
             builder.Property(e => e.Name)
                 .IsRequired()

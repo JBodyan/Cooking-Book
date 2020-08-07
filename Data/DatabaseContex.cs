@@ -38,6 +38,8 @@ namespace Data
             modelBuilder.ApplyConfiguration(new ResetPasswordConfig());
             modelBuilder.ApplyConfiguration(new ProductConfig());
             modelBuilder.ApplyConfiguration(new ProductCategoryConfig());
+            modelBuilder.ApplyConfiguration(new ProductDetailsConfig());
+            modelBuilder.ApplyConfiguration(new NutritionDeclarationConfig());
 
             DatabaseInitializer.Seed(modelBuilder);
         }

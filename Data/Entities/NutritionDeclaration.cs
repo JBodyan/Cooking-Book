@@ -7,6 +7,7 @@ namespace Data.Entities
     public class NutritionDeclaration
     {
         public Guid Id { get; set; }
+        public Guid DetailsId { get; set; }
 
     }
 }

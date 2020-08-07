@@ -29,5 +29,7 @@ namespace Data.Entities
         public bool IsEmailConfirmed { get; set; }
 
         public virtual Role Role { get; set; }
+
+        public List<ProductDetails> Products { get; set; }
     }
 }
