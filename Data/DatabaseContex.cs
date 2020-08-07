@@ -20,6 +20,8 @@ namespace Data
         public DbSet<RefreshToken> RefreshToken { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
+        public DbSet<ProductDetails> ProductDetailses { get; set; }
+        public DbSet<NutritionDeclaration> NutritionDeclarations { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
