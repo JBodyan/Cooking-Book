@@ -1,5 +1,6 @@
 ﻿using Application.Dto.Product;
 using Application.Dto.Product.Category;
+using Application.Dto.Product.Details;
 using AutoMapper;
 using Data.Entities;
 
@@ -26,6 +27,17 @@ namespace Application.Configuration.Mapper
             CreateMap<ProductCategoryAddDto, ProductCategory>().ReverseMap();
 
             CreateMap<ProductCategoryUpdateDto, ProductCategory>().ReverseMap();
+
+            
+            CreateMap<ProductDetailsDto, ProductDetails>().ReverseMap();
+
+            CreateMap<ProductDetailsAddDto, ProductDetails>().ReverseMap();
+
+            CreateMap<ProductDetailsUpdateDto, ProductDetails>().ReverseMap();
+
+            CreateMap<NutritionDeclarationDto, NutritionDeclaration>().ReverseMap();
+
+            CreateMap<NutritionDeclarationUpdateDto, NutritionDeclaration>().ReverseMap();
 
         }
     }
