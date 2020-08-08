@@ -9,7 +9,7 @@ namespace Application.Services.Interfaces
 {
     public interface IProductDetailsService
     {
-        Task<List<ProductDetailsDto>> GetAllProducts();
+        Task<List<ProductDetailsDto>> GetAllProducts(Guid userId);
 
         Task<ProductDetailsDto> GetProductById(Expression<Func<ProductDetails, bool>> predicate);
 

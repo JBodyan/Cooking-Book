@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Data.Entities
 {
-    public class NutritionDeclaration
+    public class NutritionDeclaration : IBaseEntity
     {
         public Guid Id { get; set; }
         public Guid DetailsId { get; set; }
