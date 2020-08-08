@@ -32,6 +32,7 @@ namespace CookingBook.Extensions
             services.AddScoped<IUserService, UsersService>();
             services.AddScoped<IUserResolverService, UserResolverService>();
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IProductDetailsService, ProductDetailsService>();
         }
 
         public static void AddRepositories(this IServiceCollection services)

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Application.Dto.Product;
 using Application.Dto.Product.Category;
+using Application.Dto.Product.Details;
 using Application.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -17,11 +18,12 @@ namespace CookingBook.Controllers
     {
         private IProductService ProductService { get; }
         private IUserResolverService UserResolverService { get; }
-
-        public ProductController(IProductService productService, IUserResolverService userResolverService)
+        private IProductDetailsService ProductDetailsService { get; }
+        public ProductController(IProductService productService,IProductDetailsService productDetailsService, IUserResolverService userResolverService)
         {
             ProductService = productService;
             UserResolverService = userResolverService;
+            ProductDetailsService = productDetailsService;
         }
 
         [HttpGet("all-categories")]
@@ -102,6 +104,46 @@ namespace CookingBook.Controllers
                     await ProductService.UpdateCategory(model);
                     return NoContent();
                 }
+                return Forbid();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
+        [HttpPost("add-product-details")]
+        [Authorize]
+        public async Task<ActionResult<ProductDetailsAddDto>> AddProductDetails([FromBody]ProductDetailsAddDto model)
+        {
+            try
+            {
+                if (UserResolverService.IsUserAdmin())
+                {
+                    model.UserId = UserResolverService.GetUserId();
+                    var product = await ProductDetailsService.AddProduct(model);
+                    if (product != null) return Ok(product);
+                }
+                return Forbid();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
+        [HttpGet("get-all-product-details")]
+        [Authorize]
+        public async Task<ActionResult<List<ProductDetailsDto>>> GetAllProductDetails()
+        {
+            try
+            {
+                if (UserResolverService.IsUserAdmin())
+                {
+                    var products = await ProductDetailsService.GetAllProducts(UserResolverService.GetUserId());
+                    if (products != null) return Ok(products);
+                }
+
                 return Forbid();
             }
             catch (Exception ex)

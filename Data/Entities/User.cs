@@ -30,6 +30,6 @@ namespace Data.Entities
 
         public virtual Role Role { get; set; }
 
-        public List<ProductDetails> Products { get; set; }
+        public virtual List<ProductDetails> Products { get; set; }
     }
 }
