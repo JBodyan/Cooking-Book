@@ -48,7 +48,20 @@ namespace Application.Services.Implementation
 
         public async Task<ProductDetailsAddDto> AddProduct(ProductDetailsAddDto model)
         {
+            var nutritionId = Guid.NewGuid();
+            model.Id = Guid.NewGuid();
+            model.NutritionDeclarationId = nutritionId;
+            var nutrition = new NutritionDeclaration
+            {
+                Id = nutritionId,
+                DetailsId = model.Id
+            };
+            _nutritionRepository.Add(nutrition);
+            await _nutritionRepository.SaveChangesAsync();
+
             var product = _mapper.Map<ProductDetails>(model);
+            product.NutritionDeclaration = nutrition;
+            _productDetailsRepository.Add(product);
             await _productDetailsRepository.SaveChangesAsync();
             return _mapper.Map<ProductDetailsAddDto>(product);
         }
