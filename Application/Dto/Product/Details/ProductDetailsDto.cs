@@ -12,7 +12,6 @@ namespace Application.Dto.Product.Details
         public double Price { get; set; }
         public Guid UserId { get; set; }
         public virtual NutritionDeclarationDto NutritionDeclaration { get; set; }
-        public Guid ProductId { get; set; }
         public virtual ProductDto Product { get; set; }
     }
 }
