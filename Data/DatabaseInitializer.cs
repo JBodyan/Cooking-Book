@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Data.Entities;
+using Data.Entities.Shoplist;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -13,6 +14,7 @@ namespace Data
         {
             Seed(builder.Entity<User>());
             Seed(builder.Entity<Role>());
+            Seed(builder.Entity<ShoplistRole>());
         }
 
         private static void Seed(EntityTypeBuilder<User> builder)
@@ -42,6 +44,27 @@ namespace Data
                 {
                     Id = 2,
                     Name = "User"
+                }
+            );
+        }
+
+        private static void Seed(EntityTypeBuilder<ShoplistRole> builder)
+        {
+            builder.HasData(
+                new ShoplistRole
+                {
+                    Id = 1,
+                    Name = "Owner"
+                },
+                new ShoplistRole
+                {
+                    Id = 2,
+                    Name = "Read/Write"
+                }, 
+                new ShoplistRole
+                {
+                    Id = 3,
+                    Name = "Read"
                 }
             );
         }

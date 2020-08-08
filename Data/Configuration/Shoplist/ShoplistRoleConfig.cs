@@ -1,14 +1,14 @@
-﻿using Data.Entities;
+﻿using Data.Entities.Shoplist;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Data.Configuration
+namespace Data.Configuration.Shoplist
 {
-    class RoleConfig : IEntityTypeConfiguration<Role>
+    class ShoplistRoleConfig : IEntityTypeConfiguration<ShoplistRole>
     {
-        public void Configure(EntityTypeBuilder<Role> builder)
+        public void Configure(EntityTypeBuilder<ShoplistRole> builder)
         {
-            builder.ToTable("Role");
+            builder.ToTable("ShoplistRole");
 
             builder.Property(e => e.Id)
                 .HasColumnName("id");
