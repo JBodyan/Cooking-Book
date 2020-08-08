@@ -22,6 +22,9 @@ namespace Data.Configuration
             builder.Property(e => e.UserId)
                 .HasColumnName("user_id");
 
+            builder.Property(e => e.NutritionDeclarationId)
+                .HasColumnName("nutrition_declaration_id");
+
             builder.Property(e => e.Name)
                 .IsRequired()
                 .HasColumnName("name")
@@ -34,6 +37,9 @@ namespace Data.Configuration
                 .HasColumnName("description")
                 .HasMaxLength(60);
 
+            builder.HasOne(d => d.NutritionDeclaration)
+                .WithOne(p => p.ProductDetails)
+                .OnDelete(DeleteBehavior.ClientSetNull);
         }
     }
 }

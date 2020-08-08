@@ -8,6 +8,6 @@ namespace Data.Entities
     {
         public Guid Id { get; set; }
         public Guid DetailsId { get; set; }
-
+        public virtual ProductDetails ProductDetails { get; set; }
     }
 }

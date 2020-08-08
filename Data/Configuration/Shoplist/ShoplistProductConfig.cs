@@ -21,6 +21,7 @@ namespace Data.Configuration.Shoplist
 
             builder.Property(e => e.Price)
                 .HasColumnName("price");
+            
         }
     }
 }

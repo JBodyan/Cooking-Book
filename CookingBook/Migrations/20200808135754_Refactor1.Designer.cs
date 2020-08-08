@@ -4,14 +4,16 @@ using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CookingBook.Migrations
 {
     [DbContext(typeof(DatabaseContex))]
-    partial class DatabaseContexModelSnapshot : ModelSnapshot
+    [Migration("20200808135754_Refactor1")]
+    partial class Refactor1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -317,15 +319,15 @@ namespace CookingBook.Migrations
                         .HasColumnName("id")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("RoleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("role_id")
+                        .HasColumnType("int")
+                        .HasDefaultValue(3);
+
                     b.Property<Guid>("ShoplistId")
                         .HasColumnName("shoplist_id")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("ShoplistRoleId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("shoplist_role_id")
-                        .HasColumnType("int")
-                        .HasDefaultValue(3);
 
                     b.Property<Guid>("UserId")
                         .HasColumnName("user_id")
@@ -333,9 +335,9 @@ namespace CookingBook.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ShoplistId");
+                    b.HasIndex("RoleId");
 
-                    b.HasIndex("ShoplistRoleId");
+                    b.HasIndex("ShoplistId");
 
                     b.HasIndex("UserId");
 
@@ -412,7 +414,7 @@ namespace CookingBook.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("b16e6e4c-a700-45e1-a23e-0887e04c384c"),
+                            Id = new Guid("3167e6e5-e129-49a0-81c5-660a7e8b130e"),
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "bogdan.kand97@gmail.com",
                             FirstName = "Bogdan",
@@ -478,15 +480,15 @@ namespace CookingBook.Migrations
 
             modelBuilder.Entity("Data.Entities.Shoplist.ShoplistUser", b =>
                 {
-                    b.HasOne("Data.Entities.Shoplist.Shoplist", "Shoplist")
-                        .WithMany("Users")
-                        .HasForeignKey("ShoplistId")
+                    b.HasOne("Data.Entities.Shoplist.ShoplistRole", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Data.Entities.Shoplist.ShoplistRole", "Role")
-                        .WithMany()
-                        .HasForeignKey("ShoplistRoleId")
+                    b.HasOne("Data.Entities.Shoplist.Shoplist", "Shoplist")
+                        .WithMany("Users")
+                        .HasForeignKey("ShoplistId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

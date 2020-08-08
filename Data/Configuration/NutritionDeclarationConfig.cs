@@ -18,6 +18,7 @@ namespace Data.Configuration
 
             builder.Property(e => e.DetailsId)
                 .HasColumnName("details_id");
+
         }
     }
 }

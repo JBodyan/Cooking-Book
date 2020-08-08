@@ -17,9 +17,9 @@ namespace Data.Configuration.Shoplist
                 .IsRequired()
                 .HasColumnName("user_id");
 
-            builder.Property(e => e.RoleId)
+            builder.Property(e => e.ShoplistRoleId)
                 .IsRequired()
-                .HasColumnName("role_id")
+                .HasColumnName("shoplist_role_id")
                 .HasDefaultValue(3);
 
             builder.Property(e => e.ShoplistId)
