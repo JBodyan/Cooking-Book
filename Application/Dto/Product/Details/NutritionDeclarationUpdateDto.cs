@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Application.Dto.Product.Details
 {
-    class NutritionDeclarationUpdateDto
+    public class NutritionDeclarationUpdateDto
     {
     }
 }
